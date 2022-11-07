@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <title>献立提案</title>
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <h1>献立提案くん</h1>
+            <img src="img/献立提案くん画像.PNG" alt="献立提案くんアイコン" width="80" height="60">
+        </div>
+    </header>
+
+    <main>
+    
+    <h2>今週の献立</h2>
+    <div class="wrap-tab">
+        <ul id="tab_resultDay" class="resultDay">
+            <li class="active">月</li>
+            <li>火</li>
+            <li>水</li>
+            <li>木</li>
+            <li>金</li>
+            <li>土</li>
+            <li>日</li>
+        </ul>
+    
+        <div class="wrap-tab-content">
+            <!-- 月曜日の献立 -->
+            <div class="tab-content active">
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-mainDish_0" class="result__title-image">
+                        <p id="result__title-mainDish_0" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-sideDish_0" class="result__title-image">
+                        <p id="result__title-sideDish_0" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-stapleFood_0"
+                        class="result__title-image">
+                        <p id="result__title-stapleFood_0" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-soup_0" class="result__title-image">
+                        <p id="result__title-soup_0" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="tab-content">
+            <!-- 火曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-mainDish_1" class="result__title-image">
+                        <p id="result__title-mainDish_1" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-sideDish_1" class="result__title-image">
+                        <p id="result__title-sideDish_1" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-stapleFood_1" class="result__title-image">
+                        <p id="result__title-stapleFood_1" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-soup_1" class="result__title-image">
+                        <p id="result__title-soup_1" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+            
+            <div class="tab-content">
+            <!-- 水曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-mainDish_2" class="result__title-image">
+                        <p id="result__title-mainDish_2" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-sideDish_2" class="result__title-image">
+                        <p id="result__title-sideDish_2" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-stapleFood_2" class="result__title-image">
+                        <p id="result__title-stapleFood_2" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-soup_2" class="result__title-image">
+                        <p id="result__title-soup_2" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+            
+            <div class="tab-content">
+            <!-- 木曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-mainDish_3" class="result__title-image">
+                        <p id="result__title-mainDish_3" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-sideDish_3" class="result__title-image">
+                        <p id="result__title-sideDish_3" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-stapleFood_3" class="result__title-image">
+                        <p id="result__title-stapleFood_3" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png"  id="result__thumbnail-soup_3" class="result__title-image">
+                        <p id="result__title-soup_3" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="tab-content">
+            <!-- 金曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-mainDish_4" class="result__title-image">
+                        <p id="result__title-mainDish_4" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-sideDish_4" class="result__title-image">
+                        <p id="result__title-sideDish_4" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-stapleFood_4" class="result__title-image">
+                        <p id="result__title-stapleFood_4" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-soup_4" class="result__title-image">
+                        <p id="result__title-soup_4" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+        
+            <div class="tab-content">
+            <!-- 土曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-mainDish_5" class="result__title-image">
+                        <p id="result__title-mainDish_5" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-sideDish_5" class="result__title-image">
+                        <p id="result__title-sideDish_5" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-stapleFood_5" class="result__title-image">
+                        <p id="result__title-stapleFood_5" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-soup_5" class="result__title-image">
+                        <p id="result__title-soup_5" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+
+            <div class="tab-content">
+            <!-- 日曜日の献立 -->
+            <section id="result">
+                <div class="container">
+                    <div class="result__item">
+                        <p class="result__item-text">主菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-mainDish_6" class="result__title-image">
+                        <p id="result__title-mainDish_6" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">副菜</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-sideDish_6" class="result__title-image">
+                        <p id="result__title-sideDish_6" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">主食</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-stapleFood_6" class="result__title-image">
+                        <p id="result__title-stapleFood_6" class="result__title-text"></p>
+                    </div>
+                    <div class="result__item">
+                        <p class="result__item-text">汁物</p>
+                        <img src="img/NoImage.png" id="result__thumbnail-soup_6" class="result__title-image">
+                        <p id="result__title-soup_6" class="result__title-text"></p>
+                    </div>
+                </div>
+            </section>
+            </div>
+        </div>
+    </div>
+    </main>
+
+    <footer></footer>
+    <!-- 必ずjqueryが先 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/kondate_result.js"></script>
+</body>
+
+</html>
