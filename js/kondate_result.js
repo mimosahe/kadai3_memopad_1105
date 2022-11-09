@@ -1,195 +1,175 @@
-// ボタンクリック処理
+// ページが読み込まれたら処理を開始
 $(document).ready(function() {
     
-    // ページ遷移
-    if (window.localStorage) {
-        let json = localStorage.getItem('key_name');
-        var activeDay_array = JSON.parse(json);
-    }
+    // 遷移前ページで選択された曜日を取得（予めLocalStorageに上げていた配列を取得）
+    if(window.localStorage) {
+        let json = localStorage.getItem('activeDay');
+        activeDay_array = JSON.parse(json);
+    } 
     
-    // 重複しない乱数配列をactive曜日分作成
-    var activeDay_number = activeDay_array.length;
-    var randoms = [];
-    var min = 0, max = 9;
+    // 曜日数分、献立キー（主菜のみ）を重複しないように作成
+    var tmp_array = [];     //①重複しないランダムな配列を作成
+    var min = 1, max = 10;   // ※maxは献立選択肢に応じて増減
+    function intRandom(min, max){
+        return Math.floor( Math.random() * (max - min + 1)) + min;
+    }
     for(i = min; i <= max; i++){
         while(true){
             var tmp = intRandom(min, max);
-            if(!randoms.includes(tmp)){
-            randoms.push(tmp);
+            if(!tmp_array.includes(tmp)){
+            tmp_array.push(tmp);
             break;
             }
         }
     }
-    function intRandom(min, max){
-    return Math.floor( Math.random() * (max - min + 1)) + min;
-    }
-    // 配列randomの左からactive曜日数分取得し、配列random_mainDishを作成
-    var array_random_mainDish = [];
-    for(day = 0; day <= activeDay_number-1; day++){
-        var tmp = randoms[day];
-        array_random_mainDish.push(tmp);
-    }
-
-    // activeな曜日の献立を作成
-    for(day = 0; day <= activeDay_number-1; day++){
-        var random_mainDish = array_random_mainDish[day];
-        var day_index = activeDay_array[day];
-        console.log(day_index);
-        // 0-3：和食、4-6：洋食、7-9：中華
-        if (random_mainDish >= 0 && random_mainDish < 4) {
-            var random_sideDish = Math.floor(Math.random() *4 )
-            var random_soup = Math.floor(Math.random() *4 )
-        }else if (random_mainDish >= 4 && random_mainDish < 7) {
-            var random_sideDish = Math.floor(Math.random() *3 +4 )
-            var random_soup = Math.floor(Math.random() *3 +4 )
-        }else if (random_mainDish >= 7 && random_mainDish < 9) {
-            var random_sideDish = Math.floor(Math.random() *3 +7 )
-            var random_soup = Math.floor(Math.random() *3 +7 )
-        }else if (random_mainDish === 9) {
-            var random_sideDish = Math.floor(Math.random() *3 +7 )
-        }
-
-        // 出力先を定義する
-        let title_mainDish = document.getElementById
-        ("result__title-mainDish_" + day_index);
-        let thumbnail_mainDish = document.getElementById("result__thumbnail-mainDish_" + day_index);
-        let title_stapleFood = document.getElementById("result__title-stapleFood_" + day_index);
-        let thumbnail_stapleFood = document.getElementById("result__thumbnail-stapleFood_" + day_index);
-        let title_sideDish = document.getElementById("result__title-sideDish_" + day_index);
-        let thumbnail_sideDish = document.getElementById("result__thumbnail-sideDish_" + day_index);
-        let title_soup = document.getElementById("result__title-soup_" + day_index);
-        let thumbnail_soup = document.getElementById("result__thumbnail-soup_" + day_index);
-
-        // 出力する
-        // 主菜
-        if (random_mainDish === 0) {
-            title_mainDish.innerHTML = "肉じゃが";
-            thumbnail_mainDish.src = "img/mainDish_肉じゃが.png";
-        }else if (random_mainDish === 1) {
-            title_mainDish.innerHTML = "豚肉のしょうが焼き";
-            thumbnail_mainDish.src = "img/mainDish_豚肉のしょうが焼き.png";
-        }else if (random_mainDish === 2) {
-            title_mainDish.innerHTML = "ぶりの照り焼き";
-            thumbnail_mainDish.src = "img/mainDish_ぶりの照り焼き.png";
-        }else if (random_mainDish === 3) {
-            title_mainDish.innerHTML = "鶏の唐揚げ";
-            thumbnail_mainDish.src = "img/mainDish_鶏の唐揚げ.png";
-        }else if (random_mainDish === 4) {
-            title_mainDish.innerHTML = "ハンバーグ";
-            thumbnail_mainDish.src = "img/mainDish_ハンバーグ.png";
-        }else if (random_mainDish === 5) {
-            title_mainDish.innerHTML = "サーモンムニエル";
-            thumbnail_mainDish.src = "img/mainDish_サーモンムニエル.png";
-        }else if (random_mainDish === 6) {
-            title_mainDish.innerHTML = "ビーフシチュー";
-            thumbnail_mainDish.src = "img/mainDish_ビーフシチュー.png";
-        }else if (random_mainDish === 7) {
-            title_mainDish.innerHTML = "焼き餃子";
-            thumbnail_mainDish.src = "img/mainDish_焼き餃子.png";
-        }else if (random_mainDish === 8) {
-            title_mainDish.innerHTML = "八宝菜";
-            thumbnail_mainDish.src = "img/mainDish_八宝菜.png";
-        }else if (random_mainDish === 9) {
-            title_mainDish.innerHTML = "坦々麺";
-            thumbnail_mainDish.src = "img/mainDish_坦々麺.png";
-        }
-        
-        // 主食
-        if (random_mainDish === 6) {
-            title_stapleFood.innerHTML = "パン";
-            thumbnail_stapleFood.src = "img/stapleFood_パン.png";
-        }else if (random_mainDish === 9) {
-            title_stapleFood.innerHTML = "-";
-            thumbnail_stapleFood.src = "img/NoImage.png";
-            title_soup.innerHTML = "-";
-            thumbnail_soup.src = "img/NoImage.png";
+    var number_mainDish_array = [];     // ②①の配列から7日分の値を取得
+    for(i = 0; i <= 6; i++){
+        if(activeDay_array[i] === "active"){
+            number_mainDish_array.push(tmp_array[i]);
         }else {
-            title_stapleFood.innerHTML = "ご飯";
-            thumbnail_stapleFood.src = "img/stapleFood_ご飯.png";
-        }
-        
-        // 副菜
-        if (random_sideDish === 0) {
-            title_sideDish.innerHTML = "ひじきの炒め煮";
-            thumbnail_sideDish.src = "img/sideDish_ひじきの炒め煮.png";
-        }else if (random_sideDish === 1) {
-            title_sideDish.innerHTML = "茶碗蒸し";
-            thumbnail_sideDish.src = "img/sideDish_茶碗蒸し.png";
-        }else if (random_sideDish === 2) {
-            title_sideDish.innerHTML = "小松菜と桜海老の蒸し煮";
-            thumbnail_sideDish.src = "img/sideDish_小松菜と桜海老の蒸し煮.png";
-        }else if (random_sideDish === 3) {
-            title_sideDish.innerHTML = "だし巻き卵";
-            thumbnail_sideDish.src = "img/sideDish_だし巻き卵.png";
-        }else if (random_sideDish === 4) {
-            title_sideDish.innerHTML = "グリーンサラダ";
-            thumbnail_sideDish.src = "img/sideDish_グリーンサラダ.png";
-        }else if (random_sideDish === 5) {
-            title_sideDish.innerHTML = "ジャーマンポテト";
-            thumbnail_sideDish.src = "img/sideDish_ジャーマンポテト.png";
-        }else if (random_sideDish === 6) {
-            title_sideDish.innerHTML = "ラタトゥイユ";
-            thumbnail_sideDish.src = "img/sideDish_ラタトゥイユ.png";
-        }else if (random_sideDish === 7) {
-            title_sideDish.innerHTML = "春巻き";
-            thumbnail_sideDish.src = "img/sideDish_春巻き.png";
-        }else if (random_sideDish === 8) {
-            title_sideDish.innerHTML = "棒棒鶏";
-            thumbnail_sideDish.src = "img/sideDish_棒棒鶏.png";
-        }else if (random_sideDish === 9) {
-            title_sideDish.innerHTML = "中華風野菜炒め";
-            thumbnail_sideDish.src = "img/sideDish_中華風野菜炒め.png";
-        }
-
-        // 汁物
-        if (random_soup === 0) {
-            title_soup.innerHTML = "なめこのお味噌汁";
-            thumbnail_soup.src = "img/soup_なめこのお味噌汁.png";
-        }else if (random_soup === 1) {
-            title_soup.innerHTML = "あさりのお味噌汁";
-            thumbnail_soup.src = "img/soup_あさりのお味噌汁.png";
-        }else if (random_soup === 2) {
-            title_soup.innerHTML = "しめじのお吸い物";
-            thumbnail_soup.src = "img/soup_しめじのお吸い物.png";
-        }else if (random_soup === 3) {
-            title_soup.innerHTML = "豚汁";
-            thumbnail_soup.src = "img/soup_豚汁.png";
-        }else if (random_soup === 4) {
-            title_soup.innerHTML = "オニオンコンソメスープ";
-            thumbnail_soup.src = "img/soup_オニオンコンソメスープ.png";
-        }else if (random_soup === 5) {
-            title_soup.innerHTML = "ねぎとじゃがいものスープ";
-            thumbnail_soup.src = "img/soup_ねぎとじゃがいものスープ.png";
-        }else if (random_soup === 6) {
-            title_soup.innerHTML = "パンプキンスープ";
-            thumbnail_soup.src = "img/soup_パンプキンスープ.png";
-        }else if (random_soup === 7) {
-            title_soup.innerHTML = "中華風卵スープ";
-            thumbnail_soup.src = "img/soup_中華風卵スープ.png";
-        }else if (random_soup === 8) {
-            title_soup.innerHTML = "わかめスープ";
-            thumbnail_soup.src = "img/soup_わかめスープ.png";
-        }else if (random_soup === 9) {
-            title_soup.innerHTML = "幻のスープ";
-            thumbnail_soup.src = "img/soup_幻のスープ.png";
+            number_mainDish_array.push(0);
         }
     }
-    // ローカルストレージからactiveDayの配列を削除
+    
+    // 各曜日の献立キーを作成
+    let number_stapleFood_array = [];
+    let number_sideDish_array = [];
+    let number_soup_array = [];
+
+    for(day_index = 0; day_index <= 6; day_index++){
+        let number_mainDish = number_mainDish_array[day_index];
+
+        // 主菜に応じて副菜とスープの献立キーを作成
+        if (number_mainDish >= 1 && number_mainDish < 5) { // 1-4：和
+            var number_sideDish = Math.floor(Math.random() *4 +1 );
+            var number_soup = Math.floor(Math.random() *4 +1);
+        }else if (number_mainDish >= 5 && number_mainDish < 8) { // 5-7：洋
+            var number_sideDish = Math.floor(Math.random() *3 +5 );
+            var number_soup = Math.floor(Math.random() *3 +5 );
+        }else if (number_mainDish >= 8 && number_mainDish < 11) { // 8-10：中
+            var number_sideDish = Math.floor(Math.random() *3 +8 );
+            var number_soup = Math.floor(Math.random() *3 +8 );
+        }else if (number_mainDish === 10) {
+            var number_sideDish = Math.floor(Math.random() *3 +8 );
+            var number_soup = 0
+        }else if (number_mainDish === 0) {
+            var number_sideDish = 0;
+            var number_soup = 0;
+        }
+
+        // 主菜に応じて主食の献立キーを作成
+        if (number_mainDish === 7) { // 主菜がビーフシチューの場合は主食はパン
+            var number_stapleFood = 2;
+        }else if (number_mainDish === 10 || number_mainDish === 0) { // 主菜が坦々麺の場合と主菜の献立キーが無い場合は、主食は無し
+            var number_stapleFood = 0;
+        }else {
+            var number_stapleFood = 1; // 上記以外の場合は主食はご飯
+        }
+        number_stapleFood_array.push(number_stapleFood);
+        number_sideDish_array.push(number_sideDish);
+        number_soup_array.push(number_soup);
+    }
+
+    // 7日分の献立キーをLocalStorageに保存
     if (window.localStorage) {
-        localStorage.removeItem('key_name');
+        let json_mainDish = JSON.stringify(number_mainDish_array, undefined, 1);
+        localStorage.setItem('mainDish', json_mainDish);
+        let json_stapleFood = JSON.stringify(number_stapleFood_array, undefined, 1);
+        localStorage.setItem('stapleFood', json_stapleFood);
+        let json_sideDish = JSON.stringify(number_sideDish_array, undefined, 1);
+        localStorage.setItem('sideDish', json_sideDish);
+        let json_soup = JSON.stringify(number_soup_array, undefined, 1);
+        localStorage.setItem('soup', json_soup);
     }
 });
 
-// タブ
+// タブ：選択された曜日の献立を表示
 $(function(){
     $("#tab_resultDay li").click(function(){
       $("#tab_resultDay li").removeClass("active");
       $(this).addClass("active");
-      var tab_index = $(this).index();
-      
-      $(".tab-content").removeClass("active");
-      $(".tab-content").eq(tab_index).addClass("active");
+      var tabDay_index = $(this).index();
+
+      if (window.localStorage) {
+        let json_mainDish = localStorage.getItem('mainDish');
+        number_mainDish_array = JSON.parse(json_mainDish);
+        let json_stapleFood = localStorage.getItem('stapleFood');
+        number_stapleFood_array = JSON.parse(json_stapleFood);
+        let json_sideDish = localStorage.getItem('sideDish');
+        number_sideDish_array = JSON.parse(json_sideDish);
+        let json_soup = localStorage.getItem('soup');
+        number_soup_array = JSON.parse(json_soup);
+    } 
+
+    // 選択されたタブが、献立提案対象の曜日であれば、献立提案内容を表示する
+    //   if (activeDay_array[tabDay_index] === "active"){
+        let number_mainDish = number_mainDish_array[tabDay_index];
+        let number_stapleFood = number_stapleFood_array[tabDay_index];
+        let number_sideDish = number_sideDish_array[tabDay_index];
+        let number_soup = number_soup_array[tabDay_index];
+
+        document.getElementById("result__title_mainDish").innerHTML = mainDish[number_mainDish].name
+        document.getElementById("result__title_sideDish").innerHTML = sideDish[number_sideDish].name
+        document.getElementById("result__title_stapleFood").innerHTML = stapleFood[number_stapleFood].name
+        document.getElementById("result__title_soup").innerHTML = soup[number_soup].name
+
+        document.getElementById("result__img_mainDish").src = "img/mainDish-" + number_mainDish + ".png"
+        document.getElementById("result__img_sideDish").src = "img/sideDish-" + number_sideDish + ".png"
+        document.getElementById("result__img_stapleFood").src = "img/stapleFood-" + number_stapleFood + ".png"
+        document.getElementById("result__img_soup").src = "img/soup-" + number_soup + ".png"
+    //   }
     });
   });
 
+// 献立の選択肢の定義
+// 主菜リストの定義
+const mainDish = [
+    {name: "-"}, //0
+    {name: "肉じゃが"}, //1
+    {name: "豚肉のしょうが焼き"}, //2
+    {name: "ぶりの照り焼き"}, //3
+    {name: "鶏の唐揚げ"}, //4
+    {name: "ハンバーグ"}, //5
+    {name: "サーモンムニエル"}, //6
+    {name: "ビーフシチュー"}, //7
+    {name: "焼き餃子"}, //8
+    {name: "八宝菜"}, //9
+    {name: "坦々麺"}, //10
+]
 
+// 主食リストの定義
+const stapleFood = [
+    {name: "-"}, //0
+    {name: "ご飯"}, //1
+    {name: "パン"}, //2
+]
+
+// 副菜リストの定義
+const sideDish = [
+    {name: "-"}, //0
+    {name: "ひじきの炒め煮"}, //1
+    {name: "茶碗蒸し"}, //2
+    {name: "小松菜と桜海老の蒸し煮"}, //3
+    {name: "だし巻き卵"}, //4
+    {name: "グリーンサラダ"}, //5
+    {name: "ジャーマンポテト"}, //6
+    {name: "ラタトゥイユ"}, //7
+    {name: "春巻き"}, //8
+    {name: "棒棒鶏"}, //9
+    {name: "中華風野菜炒め"}, //10
+]
+
+// 汁物リストの定義
+const soup = [
+    {name: "-"}, //0
+    {name: "なめこのお味噌汁"}, //1
+    {name: "あさりのお味噌汁"}, //2
+    {name: "しめじのお吸い物"}, //3
+    {name: "豚汁"}, //4
+    {name: "オニオンコンソメスープ"}, //5
+    {name: "ねぎとじゃがいものスープ"}, //6
+    {name: "パンプキンスープ"}, //7
+    {name: "中華風卵スープ"}, //8
+    {name: "わかめスープ"}, //9
+    {name: "幻のスープ"}, //10
+]

@@ -2,7 +2,6 @@
 @charset "utf-8";
 html{
     font-size: 62.5%;
-    /* scroll-padding: 20px; */
 }
 
 body{
@@ -118,6 +117,10 @@ body{
     font-size: 1.8rem;
     font-weight: bold;
 }
+.wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}
 .container{
     display: flex;
     flex-wrap: wrap;
@@ -138,5 +141,9 @@ body{
     margin: auto;
     font-weight: bold;
     font-size: 2.0rem;
+}
+.container__Ingredient{
+    background-color: #faebd7;
+    width: 530px;
 }
 

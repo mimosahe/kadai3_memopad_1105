@@ -13,22 +13,29 @@ $(function(){
 
 // ボタンクリック処理
 $(".btn_input").on("click", function() {
-    // 「何曜日の献立をつくる？」がactiveの曜日のindexを配列に格納
+    localStorage.clear();
     var activeDay_index = 0;
-    var activeDay_array = [];
+
     $("#btn_selectDay p").each(function(){
         if ($(this).hasClass("active")){
-            activeDay_array.push(activeDay_index);
+            localStorage.setItem(activeDay_index, "active");
+        } else {
+            localStorage.setItem(activeDay_index, null);
         }
         activeDay_index++;
     });
-    if (activeDay_array.length === 0){
+
+    let activeDay_array = [];
+    for( i = 0; i < 7; i++ ){
+        let activeDay = localStorage.getItem(i);
+        activeDay_array.push(activeDay);
+    }
+    if (activeDay_array.indexOf("active") === -1){ // 曜日がひとつも選択されていなければアラートを表示
         alert("献立をつくる曜日を選んでください")
-    }else {
-        // activeDayの配列をローカルストレージに保存
+    }else { // 曜日が選択されていればそれらをLocalStorageに保存
         if (window.localStorage) {
             let json = JSON.stringify(activeDay_array, undefined, 1);
-            localStorage.setItem('key_name', json);
+            localStorage.setItem('activeDay', json);
             window.location.href = "kondate_result.html";
         }
     }
