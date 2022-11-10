@@ -117,59 +117,78 @@ $(function(){
         document.getElementById("result__img_sideDish").src = "img/sideDish-" + number_sideDish + ".png"
         document.getElementById("result__img_stapleFood").src = "img/stapleFood-" + number_stapleFood + ".png"
         document.getElementById("result__img_soup").src = "img/soup-" + number_soup + ".png"
-    //   }
-    });
-  });
+    
+    // 使う食材のリストアップ
 
+    // $(".container__ingredient").append(
+    //     '<div><p>mainDish[number_mainDish]</p></div>'
+    //     );  
+    // });
+    alert(mainDish[number_mainDish]);
+    console.log(mainDish[number_mainDish][ingredient][1][item]);
+    });
+});
 // 献立の選択肢の定義
 // 主菜リストの定義
 const mainDish = [
-    {name: "-"}, //0
-    {name: "肉じゃが"}, //1
-    {name: "豚肉のしょうが焼き"}, //2
-    {name: "ぶりの照り焼き"}, //3
-    {name: "鶏の唐揚げ"}, //4
-    {name: "ハンバーグ"}, //5
-    {name: "サーモンムニエル"}, //6
-    {name: "ビーフシチュー"}, //7
-    {name: "焼き餃子"}, //8
-    {name: "八宝菜"}, //9
-    {name: "坦々麺"}, //10
+    {title: "-"}, //0
+    {title: "肉じゃが",
+     ingredient: [
+        {item: "牛薄切り肉", quantity: 140, category: "meatandfish"},
+        {item: "じゃがいも", quantity: 2, category: "veg"},
+        {item: "にんじん", quantity: 0.5, category: "veg"},
+        {item: "玉ねぎ", quantity: 0.5, category: "veg"},
+        {item: "しらたき", quantity: 100, category: "veg"},
+        {item: "きぬさや", quantity: 6, category: "veg"},
+        {item: "ごま油", quantity: "小さじ2", category: "spice"},
+        {item: "だし汁", quantity: "1カップ", category: "spice"},
+        {item: "砂糖", quantity: "大さじ2", category: "spice"},
+        {item: "みりん", quantity: "大さじ1", category: "spice"},
+        {item: "しょうゆ", quantity: "大さじ2", category: "spice"}]}, //1
+    {title: "豚肉のしょうが焼き"}, //2
+    {title: "ぶりの照り焼き"}, //3
+    {title: "鶏の唐揚げ"}, //4
+    {title: "ハンバーグ"}, //5
+    {title: "サーモンムニエル"}, //6
+    {title: "ビーフシチュー"}, //7
+    {title: "焼き餃子"}, //8
+    {title: "八宝菜"}, //9
+    {title: "坦々麺"} //10
 ]
 
 // 主食リストの定義
 const stapleFood = [
-    {name: "-"}, //0
-    {name: "ご飯"}, //1
-    {name: "パン"}, //2
+    {title: "-"}, //0
+    {title: "ご飯"}, //1
+    {title: "パン"} //2
 ]
 
 // 副菜リストの定義
 const sideDish = [
-    {name: "-"}, //0
-    {name: "ひじきの炒め煮"}, //1
-    {name: "茶碗蒸し"}, //2
-    {name: "小松菜と桜海老の蒸し煮"}, //3
-    {name: "だし巻き卵"}, //4
-    {name: "グリーンサラダ"}, //5
-    {name: "ジャーマンポテト"}, //6
-    {name: "ラタトゥイユ"}, //7
-    {name: "春巻き"}, //8
-    {name: "棒棒鶏"}, //9
-    {name: "中華風野菜炒め"}, //10
+    {title: "-"}, //0
+    {title: "ひじきの炒め煮"}, //1
+    {title: "茶碗蒸し"}, //2
+    {title: "小松菜と桜海老の蒸し煮"}, //3
+    {title: "だし巻き卵"}, //4
+    {title: "グリーンサラダ"}, //5
+    {title: "ジャーマンポテト"}, //6
+    {title: "ラタトゥイユ"}, //7
+    {title: "春巻き"}, //8
+    {title: "棒棒鶏"}, //9
+    {title: "中華風野菜炒め"} //10
 ]
 
 // 汁物リストの定義
 const soup = [
-    {name: "-"}, //0
-    {name: "なめこのお味噌汁"}, //1
-    {name: "あさりのお味噌汁"}, //2
-    {name: "しめじのお吸い物"}, //3
-    {name: "豚汁"}, //4
-    {name: "オニオンコンソメスープ"}, //5
-    {name: "ねぎとじゃがいものスープ"}, //6
-    {name: "パンプキンスープ"}, //7
-    {name: "中華風卵スープ"}, //8
-    {name: "わかめスープ"}, //9
-    {name: "幻のスープ"}, //10
+    {title: "-"}, //0
+    {title: "なめこのお味噌汁"}, //1
+    {title: "あさりのお味噌汁"}, //2
+    {title: "しめじのお吸い物"}, //3
+    {title: "豚汁"}, //4
+    {title: "オニオンコンソメスープ"}, //5
+    {title: "ねぎとじゃがいものスープ"}, //6
+    {title: "パンプキンスープ"}, //7
+    {title: "中華風卵スープ"}, //8
+    {title: "わかめスープ"}, //9
+    {title: "幻のスープ"} //10
 ]
