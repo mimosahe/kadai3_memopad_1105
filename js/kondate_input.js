@@ -13,6 +13,7 @@ $(function(){
 
 // ボタンクリック処理
 $(".btn_input").on("click", function() {
+
     localStorage.clear();
     var activeDay_index = 0;
 

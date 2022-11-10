@@ -46,7 +46,7 @@ $(document).ready(function() {
         }else if (number_mainDish >= 5 && number_mainDish < 8) { // 5-7：洋
             var number_sideDish = Math.floor(Math.random() *3 +5 );
             var number_soup = Math.floor(Math.random() *3 +5 );
-        }else if (number_mainDish >= 8 && number_mainDish < 11) { // 8-10：中
+        }else if (number_mainDish >= 8 && number_mainDish < 10) { // 8-10：中
             var number_sideDish = Math.floor(Math.random() *3 +8 );
             var number_soup = Math.floor(Math.random() *3 +8 );
         }else if (number_mainDish === 10) {
@@ -108,10 +108,10 @@ $(function(){
         let number_sideDish = number_sideDish_array[tabDay_index];
         let number_soup = number_soup_array[tabDay_index];
 
-        document.getElementById("result__title_mainDish").innerHTML = mainDish[number_mainDish].name
-        document.getElementById("result__title_sideDish").innerHTML = sideDish[number_sideDish].name
-        document.getElementById("result__title_stapleFood").innerHTML = stapleFood[number_stapleFood].name
-        document.getElementById("result__title_soup").innerHTML = soup[number_soup].name
+        document.getElementById("result__title_mainDish").innerHTML = mainDish[number_mainDish].title
+        document.getElementById("result__title_sideDish").innerHTML = sideDish[number_sideDish].title
+        document.getElementById("result__title_stapleFood").innerHTML = stapleFood[number_stapleFood].title
+        document.getElementById("result__title_soup").innerHTML = soup[number_soup].title
 
         document.getElementById("result__img_mainDish").src = "img/mainDish-" + number_mainDish + ".png"
         document.getElementById("result__img_sideDish").src = "img/sideDish-" + number_sideDish + ".png"
@@ -119,13 +119,8 @@ $(function(){
         document.getElementById("result__img_soup").src = "img/soup-" + number_soup + ".png"
     
     // 使う食材のリストアップ
-
-    // $(".container__ingredient").append(
-    //     '<div><p>mainDish[number_mainDish]</p></div>'
-    //     );  
-    // });
-    alert(mainDish[number_mainDish]);
-    console.log(mainDish[number_mainDish][ingredient][1][item]);
+    // 【食材名が取得できるか確認】
+    console.log(mainDish[number_mainDish]["ingredient"][1]["item"]);
     });
 });
 // 献立の選択肢の定義
