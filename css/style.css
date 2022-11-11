@@ -43,45 +43,6 @@ body{
     transition: .1s;
 }   
 
-/* タブ */
-.wrap-tab{
-  overflow: hidden;
-}
-
-.resultDay{
-  display: flex;
-  margin: 0 -2px;
-  border-bottom: 3px solid #deb887;
-}
-.resultDay > li{
-  display: block;
-  padding: 0.2em 1em;
-  margin: 0 2px;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-  background: #ffdead;
-  box-sizing: border-box;
-  cursor: pointer;
-  font-size: 2.0rem;
-}
-
-.resultDay .active{
-  background: #a0522d;
-}
-
-.tab-content{
-  display: none;
-  padding: 1em;
-  border-bottom: 1px solid #deb887;
-  border-left: 1px solid #deb887;
-  border-right: 1px solid #deb887;
-}
-.tab-content.active{
-  display: block;
-}
-
-
 /* input */
 .btn_input{
     font-size: 1.8rem;
@@ -107,6 +68,29 @@ body{
 }
 
 /* result */
+.all-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+.unit_kondate{
+    display: flex;
+    flex-wrap: wrap;
+    width: 700px;
+}
+.unit_list{
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
+}
+.title_kondate{
+    width: 650px;
+    margin: 15px, 0, 15px, 0;
+}
+.title_list{
+    width: 480px;
+    margin: 15px, 0, 15px, 0;
+}
 .section__title-text{
     font-size: 1.8rem;
     font-weight: bold;
@@ -142,8 +126,68 @@ body{
     font-weight: bold;
     font-size: 2.0rem;
 }
-.container__Ingredient{
+.container__ingredient{
     background-color: #faebd7;
-    width: 530px;
+    width: 480px;
+}
+.container__ingredient >h3{
+    padding: 3px;
+    height: 30px;
+    margin: 0px;
 }
 
+.wrapper__ingredient{
+    display: flex;
+    margin: 0px;
+    padding: 1px;
+    height: 20px;
+    font-size: 1.4rem;
+}
+.wrapper__ingredient >p{
+    margin: 0;
+    padding: 0;
+}
+
+/* タブ */
+.wrap-tab{
+overflow: hidden;
+position: absolute;
+top: 150px;
+margin: 0px;
+}
+
+.resultDay{
+display: flex;
+padding: 0, 0, 0, 0px;
+margin: 0px;
+border-bottom: 3px solid #deb887;
+width: 650px;
+}
+.resultDay > li{
+display: block;
+padding: 0px;
+margin: 0 2px;
+width: 100%;
+color: #fff;
+text-align: center;
+background: #ffdead;
+box-sizing: border-box;
+cursor: pointer;
+font-size: 2.0rem;
+}
+
+.resultDay .active{
+background: #a0522d;
+}
+
+.tab-content{
+display: none;
+padding: 1em;
+border-bottom: 1px solid #deb887;
+border-left: 1px solid #deb887;
+border-right: 1px solid #deb887;
+}
+.tab-content.active{
+display: block;
+width: 650px;
+}

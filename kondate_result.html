@@ -21,57 +21,67 @@
     </header>
 
     <main>
+
     
-    <h2>今週の献立</h2>
-    <div class="wrap-tab">
-        <ul id="tab_resultDay" class="resultDay">
-            <li class="active">月</li>
-            <li>火</li>
-            <li>水</li>
-            <li>木</li>
-            <li>金</li>
-            <li>土</li>
-            <li>日</li>
-        </ul>
-    
-        <div class="wrap-tab-content">
-            <!-- 各曜日の献立 -->
-            <div class="tab-content active">
-            <section id="result">
-                <div class="wrapper">
-                    <div class="container">
-                        <div class="result__item">
-                            <p class="result__item-text">主菜</p>
-                            <img src="img/mainDish-0.png" id="result__img_mainDish" class="result__title-image">
-                            <p id="result__title_mainDish" class="result__title-text"></p>
-                        </div>
-                        <div class="result__item">
-                            <p class="result__item-text">副菜</p>
-                            <img src="img/sideDish-0.png"  id="result__img_sideDish" class="result__title-image">
-                            <p id="result__title_sideDish" class="result__title-text"></p>
-                        </div>
-                        <div class="result__item">
-                            <p class="result__item-text">主食</p>
-                            <img src="img/stapleFood-0.png"  id="result__img_stapleFood"
-                            class="result__title-image">
-                            <p id="result__title_stapleFood" class="result__title-text"></p>
-                        </div>
-                        <div class="result__item">
-                            <p class="result__item-text">汁物</p>
-                            <img src="img/soup-0.png"  id="result__img_soup" class="result__title-image">
-                            <p id="result__title_soup" class="result__title-text"></p>
-                        </div>
+    <div class="all-wrapper">
+        <div class="unit_kondate">    
+            <h2 class="title_kondate">今週の献立</h2>
+            <div class="wrap-tab">
+                <ul id="tab_resultDay" class="resultDay">
+                    <li class="active">月</li>
+                    <li>火</li>
+                    <li>水</li>
+                    <li>木</li>
+                    <li>金</li>
+                    <li>土</li>
+                    <li>日</li>
+                </ul>
+                
+                <!-- 各曜日の献立 -->
+                <div class="tab-content active">
+                <section id="result">
+                    <div class="wrapper">
+                        <div class="container">
+                            <div class="result__item">
+                                <p class="result__item-text">主菜</p>
+                                <img src="img/mainDish-0.png" id="result__img_mainDish" class="result__title-image">
+                                <p id="result__title_mainDish" class="result__title-text"></p>
+                            </div>
+                            <div class="result__item">
+                                <p class="result__item-text">副菜</p>
+                                <img src="img/sideDish-0.png"  id="result__img_sideDish" class="result__title-image">
+                                <p id="result__title_sideDish" class="result__title-text"></p>
+                            </div>
+                            <div class="result__item">
+                                <p class="result__item-text">主食</p>
+                                <img src="img/stapleFood-0.png"  id="result__img_stapleFood"
+                                class="result__title-image">
+                                <p id="result__title_stapleFood" class="result__title-text"></p>
+                            </div>
+                            <div class="result__item">
+                                <p class="result__item-text">汁物</p>
+                                <img src="img/soup-0.png"  id="result__img_soup" class="result__title-image">
+                                <p id="result__title_soup" class="result__title-text"></p>
+                            </div>
+                        </div>  
                     </div>
-                    <div class="container__ingredient">
-                        <p>使う食材</p>
-                        <p>肉・魚</p> <!--meatandfish-->
-                        <p>野菜・果物</p> <!--veg-->
-                        <p>卵・乳製品</p> <!--dairyandmilk-->
-                        <p>調味料</p> <!--spice-->
-                        <p>その他</p> <!--other-->
-                    </div>
+                </section>
                 </div>
-            </section>
+            </div>   
+        </div>
+        <div class="unit_list">
+            <h2 class="title_list">使う食材リスト（2人分）</h2>
+            <div class="container__ingredient">
+                <h3 class="ingr1">肉・魚</h3>
+                <ul class="ingr1-list"></ul>
+                <h3 class="ingr2">野菜・果物</h3>
+                <ul class="ingr2-list"></ul>
+                <h3 class="ingr3">卵・乳製品</h3>
+                <ul class="ingr3-list"></ul>
+                <h3 class="ingr4">調味料</h3> 
+                <ul class="ingr4-list"></ul>
+                <h3 class="ingr5">その他</h3> 
+                <ul class="ingr5-list"></ul>
             </div>
         </div>
     </div>
